@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ctic.gestion.servicios;
+package ctic.gestion.controller;
 
 /**
  *
  * @author rociomunoz
  */
-public class ExtraccionService {
-
-     
-    
-    public void generarExcel(){
-    
-    
-    }
+public class GestionController {
     
 }
