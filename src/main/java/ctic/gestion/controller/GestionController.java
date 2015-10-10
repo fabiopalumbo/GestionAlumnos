@@ -40,11 +40,12 @@ public class GestionController {
         
         try {
             List<Alumno> lista = serviceAlumnos.getAlumnos();
-            
+            model.put("listaAlumnos", lista);
             
         } catch (Exception ex) {
             Logger.getLogger(GestionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
         return BASE_VIEW + "main";
     }

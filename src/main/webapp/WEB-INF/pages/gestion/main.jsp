@@ -7,7 +7,25 @@
     </head>
     <body>
 
-        estoy en el main
+         <div class="container">
+            <table id="tablaAlumnos" class="table table-condensed">
+                <thead>
+                    <tr>
+                        
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="alumno" items="${listaAlumnos}">
+                    <tr>  
+                        <td name="nombre"><c:out value="${alumno.nombre}" /></td>
+                        <td name="apellidos"><c:out value="${alumno.apellidos}" /></td>
+                    </tr>
+                </c:forEach>
+                </tbody>            
+            </table>
+        </div>
 
 </body>
 
