@@ -32,4 +32,40 @@ public class AlumnosServiceImpl implements AlumnosService {
 
         return lista;
     }
+
+    @Override
+    public void insertAlumno(Alumno al) throws Exception {
+     
+        try {
+             daoLocal.insertAlumno(al);
+        } catch (Exception e) {
+            Logger.getLogger(AlumnosServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+    
+    }
+
+    @Override
+    public void updateAlumno(Alumno al) throws Exception {
+     try {
+             daoLocal.updateAlumno(al);
+        } catch (Exception e) {
+            Logger.getLogger(AlumnosServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+
+        }  
+    
+    }
+
+    @Override
+    public void deleteAlumno(Alumno al) throws Exception {
+        
+         try {
+             daoLocal.deleteAlumno(al);
+        } catch (Exception e) {
+            Logger.getLogger(AlumnosServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+
+        }
+    
+    
+    }
 }

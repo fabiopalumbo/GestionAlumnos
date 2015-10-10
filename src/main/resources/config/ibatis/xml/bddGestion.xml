@@ -6,8 +6,26 @@
                            
     <select id="select-Alumnos" resultClass="ctic.gestion.dto.Alumno">
         
-        SELECT NOMBRE, APELLIDOS FROM gestion.Alumno
+        SELECT IDALUMNO, NOMBRE, APELLIDOS FROM gestion.Alumno
         
     </select>
-             
+    
+    <update id="update-Alumno" parameterClass="ctic.gestion.dto.Alumno">
+        
+        UPDATE gestion.Alumnos SET NOMBRE = #nombre#, APELLIDOS = #apellidos#
+        WHERE idAlumno = #idAlumno#
+        
+    </update>
+    
+    <delete id="delete-Alumno" parameterClass="ctic.gestion.dto.Alumno">
+        
+        DELETE FROM gestion.Alumno WHERE idAlumno=#idAlumno# 
+        
+    </delete>
+    
+    <insert id="insert-Alumno" parameterClass ="ctic.gestion.dto.Alumno">
+        
+    INSERT INTO GESTION.ALUMNO(NOMBRE, APELLIDOS) VALUES(#nombre:VARCHAR#, #apellidos:VARCHAR#)
+    </insert>         
+                               
 </sqlMap>

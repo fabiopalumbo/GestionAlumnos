@@ -11,6 +11,7 @@ package ctic.gestion.dto;
  */
 public class Alumno {
     
+    private Integer idAlumno; 
     private String dni;
     private String nombre;
     private String apellidos;
@@ -51,6 +52,14 @@ public class Alumno {
 
     public void setEsDelegado(boolean esDelegado) {
         this.esDelegado = esDelegado;
+    }
+
+    public Integer getIdAlumno() {
+        return idAlumno;
+    }
+
+    public void setIdAlumno(Integer idAlumno) {
+        this.idAlumno = idAlumno;
     }
     
     

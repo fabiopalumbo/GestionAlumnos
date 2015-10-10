@@ -50,6 +50,53 @@ public class GestionController {
         return BASE_VIEW + "main";
     }
     
+    @RequestMapping(value = "/nuevo", method = RequestMethod.POST)
+    public String nuevo(HttpServletRequest request, ModelMap model) {
+    
+        try {
+            Alumno al = new Alumno();
+            
+            serviceAlumnos.insertAlumno(al);
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(GestionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return BASE_VIEW + "main";
+    }
+    
+    @RequestMapping(value = "/borrar", method = RequestMethod.POST)
+    public String borrar(HttpServletRequest request, ModelMap model) {
+    
+        Alumno al = new Alumno();
+        
+        try {
+            serviceAlumnos.deleteAlumno(al);
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(GestionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        return BASE_VIEW + "main";
+    }
+    
+    @RequestMapping(value = "/editar", method = RequestMethod.POST)
+    public String editar(HttpServletRequest request, ModelMap model) {
+    
+        Alumno al = new Alumno();
+        try {
+            serviceAlumnos.updateAlumno(al);
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(GestionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return BASE_VIEW + "main";
+    }
+    
     
     
     

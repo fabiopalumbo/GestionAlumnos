@@ -26,12 +26,25 @@ public class AlumnosDaoImpl extends SqlMapClientDaoSupport implements IAlumnosDa
     @Override
     public List<Alumno> getAlumnos() throws Exception {
 
-        super.getDataSource().getConnection().toString();
-        super.getSqlMapClient().getDataSource().toString();
-        super.getSqlMapClientTemplate().getDataSource().toString();
-        super.getSqlMapClientTemplate().getSqlMapClient().getDataSource().getConnection().toString();
+       
         List<Alumno> lista = super.getSqlMapClientTemplate().queryForList("select-Alumnos");
         return lista;
+    }
+
+    @Override
+    public void insertAlumno(Alumno alumno) throws Exception {
+    
+        super.getSqlMapClientTemplate().insert("insert-Alumno", alumno);
+    }
+
+    @Override
+    public void updateAlumno(Alumno alumno) throws Exception {
+        super.getSqlMapClientTemplate().update("update-Alumno", alumno);
+    }
+
+    @Override
+    public void deleteAlumno(Alumno alumno) throws Exception {
+        super.getSqlMapClientTemplate().delete("delete-Alumno", alumno);
     }
 
 }
