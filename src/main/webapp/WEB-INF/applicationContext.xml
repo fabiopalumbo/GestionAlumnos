@@ -21,9 +21,9 @@
     <context:property-placeholder location="classpath:config.properties" />
 
 	
-    <context:component-scan base-package="com.ctic.gestion" >
+    <context:component-scan base-package="ctic.gestion" >
  
-        <context:exclude-filter type="regex" expression="com.ctic.gestion.web" />
+        <context:exclude-filter type="regex" expression="ctic.gestion.web" />
  
     </context:component-scan>
 
@@ -45,7 +45,6 @@
         <property name="testWhileIdle" value="true"/>
         <property name="testOnBorrow" value="true"/>
         <property name="testOnReturn" value="false"/>
-        <property name="validationQuery" value="SELECT 1 FROM DUAL"/>
         <property name="validationInterval" value="30000"/>
         <property name="timeBetweenEvictionRunsMillis" value="30000"/>
         <property name="removeAbandonedTimeout" value="60000"/>
@@ -62,7 +61,7 @@
 
     <aop:config>
         <aop:advisor id="managerTx" advice-ref="txAdvice"
-                     pointcut="execution(* com.ctic.gestion.service.impl.*.*(..))" />
+                     pointcut="execution(* ctic.gestion.service.impl.*.*(..))" />
     </aop:config>
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">

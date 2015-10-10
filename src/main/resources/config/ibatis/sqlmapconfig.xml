@@ -9,7 +9,7 @@
     <settings cacheModelsEnabled="true"
               lazyLoadingEnabled="true"
               enhancementEnabled="true"
-              useStatementNamespaces="true"/>
+              useStatementNamespaces="false"/>
 
    
     <sqlMap resource="config/ibatis/xml/bddGestion.xml" />
