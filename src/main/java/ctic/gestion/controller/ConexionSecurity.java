@@ -1,7 +1,5 @@
 package ctic.gestion.controller;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,12 +57,16 @@ public class ConexionSecurity implements AuthenticationManager {
         UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) a;
         Authentication auth = null;
 
-        String username = "rocio";
-        String password = "rocio";
-        
-        List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
-                        grantedAuths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-                        auth = new UsernamePasswordAuthenticationToken(username, password, grantedAuths);
+        String username = String.valueOf(authentication.getPrincipal());
+        String password = String.valueOf(authentication.getCredentials());
+
+        if (username.equals("rocio") && password.equals("rocio")) {
+            List<GrantedAuthority> grantedAuths = new ArrayList<GrantedAuthority>();
+            grantedAuths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            auth = new UsernamePasswordAuthenticationToken(username, password, grantedAuths);
+        } else {
+            throw new BadCredentialsException("El usuario " + username + " no tiene permisos de acceso");
+        }
 
         return auth;
 

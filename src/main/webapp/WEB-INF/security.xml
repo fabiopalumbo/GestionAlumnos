@@ -17,8 +17,7 @@
           entry-point-ref="authenticationEntryPoint">
 
         <intercept-url pattern="/auth/login" access="permitAll"/>
-        <intercept-url pattern="/app/**" access="hasRole('ROLE_ADMIN,ROLE_USER')"/>
-        <intercept-url pattern="/GestBalances/**" access="hasRole('ROLE_ADMIN,ROLE_USER')"/>
+        <intercept-url pattern="/gestion/**" access="hasRole('ROLE_ADMIN,ROLE_USER')"/>
         <custom-filter ref="authenticationFilter" position="FORM_LOGIN_FILTER"/>
         <logout 
             invalidate-session="true"    
@@ -39,16 +38,13 @@
                 p:authenticationSuccessHandler-ref="customAuthenticationSuccessHandler" />
     
     <beans:bean id="customAuthenticationManager" class="ctic.gestion.controller.ConexionSecurity">
-        <beans:property  name="grupo_admin" value="${ldap.grupo.admin}" />
-        <beans:property name="grupo_user" value="${ldap.grupo.user}" />
-        <beans:property name="url_ldap" value="${ldap.url}" />
-        <beans:property name="domain_ldap" value="${ldap.domain}" />
+        
     </beans:bean> 
     
     <beans:bean id="customAuthenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"   
                 p:defaultFailureUrl="/auth/login.htm?error=true" />    
     <beans:bean id="customAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler"   
-                p:defaultTargetUrl="/gestBal/informes.htm?filtro=1"/> 
+                p:defaultTargetUrl="/gestion/main.htm?"/> 
 
     <beans:bean id="authenticationEntryPoint"  class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint" p:loginFormUrl="/auth/login.htm"/>	    
     <authentication-manager/>
