@@ -13,7 +13,7 @@ $(document).ready(function() {
    
 
     //Evento submit al eliminar un tipoBalance
-    $("#botonEliminar").click(function(event) {
+    $("#btnEliminar").click(function(event) {
 
         event.preventDefault();
         
@@ -26,7 +26,7 @@ $(document).ready(function() {
             });
             
             
-            $("#listaIdAlumno#").val(arrayIdAlumno)
+            $("#listaIdAlumno").val(arrayIdAlumno)
             
             $("#form-eliminar").submit();
 
@@ -54,12 +54,12 @@ $(document).ready(function() {
             var etiquetaNombre = value + "nombre";
             var etiquetaApellidos = value + "apellidos";
             
-            ;
+            
             $('#'+etiquetaApellidos).html();
             
-            $('#apellidosEditar').val($('#'+etiquetaNombre).html())
-            $('#nombreEditar').val($('#'+etiquetaApellidos).html())
-            
+            $('#apellidosEditar').val($('#'+etiquetaApellidos).html());
+            $('#nombreEditar').val($('#'+etiquetaNombre).html());
+            $('#idAlumnoEditar').val(value);
             $('#modal-alumnoEditar').modal('show');
             
              

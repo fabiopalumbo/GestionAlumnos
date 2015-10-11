@@ -12,7 +12,7 @@
     
     <update id="update-Alumno" parameterClass="ctic.gestion.dto.Alumno">
         
-        UPDATE gestion.Alumnos SET NOMBRE = #nombre#, APELLIDOS = #apellidos#
+        UPDATE gestion.Alumno SET NOMBRE = #nombre#, APELLIDOS = #apellidos#
         WHERE idAlumno = #idAlumno#
         
     </update>

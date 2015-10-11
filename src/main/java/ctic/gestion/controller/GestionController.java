@@ -82,7 +82,7 @@ public class GestionController {
     public String borrar(HttpServletRequest request, ModelMap model) {
 
         try {
-            String idAlumnos = request.getParameter("listaIdAlumnos");
+            String idAlumnos = request.getParameter("listaIdAlumno");
 
             if (idAlumnos != null && !idAlumnos.equals("")) {
                 String[] arrayIds = idAlumnos.split(";");
@@ -92,6 +92,8 @@ public class GestionController {
                     Alumno al = new Alumno();
                     al.setIdAlumno(iId);
                     serviceAlumnos.deleteAlumno(al);
+                    List<Alumno> lista = serviceAlumnos.getAlumnos();
+                    model.put("listaAlumnos", lista);
 
                 }
             }
@@ -107,14 +109,31 @@ public class GestionController {
 
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
     public String editar(HttpServletRequest request, ModelMap model) {
-
-        Alumno al = new Alumno();
+        String message = "";
         try {
-            serviceAlumnos.updateAlumno(al);
+            String idEditar = request.getParameter("idAlumnoEditar");
+            String nombreEditar = request.getParameter("nombreEditar");
+            String apellidoEditar = request.getParameter("apellidosEditar");
+
+            if (idEditar != null && !idEditar.equals("")) {
+                Integer iIdEditar = Integer.parseInt(idEditar);
+                Alumno al = new Alumno();
+                al.setIdAlumno(iIdEditar);
+                al.setApellidos(apellidoEditar);
+                al.setNombre(nombreEditar);
+                serviceAlumnos.updateAlumno(al);
+                message = "El alumno ha sido actualizado correctamente";
+                List<Alumno> lista = serviceAlumnos.getAlumnos();
+                model.put("listaAlumnos", lista);
+            } else {
+                message = "No es posible editar el alumno";
+            }
 
         } catch (Exception ex) {
             Logger.getLogger(GestionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        model.addAttribute("message", message);
 
         return BASE_VIEW + "main";
     }

@@ -179,15 +179,8 @@ table {background:#fff !important;}
 .ui-state-hover.ui-datepicker-next-hover {background: none !important;border: none !important; right: 2px !important; top: 2px !important; cursor:pointer !important;}
 .ui-state-hover.ui-datepicker-prev-hover {background: none !important;border: none !important; left: 2px !important; top: 2px !important; cursor:pointer !important;}
 
-.table input[type="checkbox"] {clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px); position: absolute;}
-.table input[type="checkbox"] + label span{display: inline-block;width: 19px; height: 21px; background: url(../img/check.png) left top no-repeat; margin: -1px 4px 0 0; vertical-align: middle; cursor:pointer;}
-.table input[type="checkbox"]:checked + label span{background: url(../img/check.png) -19px top no-repeat;}
-@media \0screen\,screen\9 {.table input[type="checkbox"] {clip: auto; position: static;} .table input[type="checkbox"] + label span {display:none;}}
 
-input[type="radio"] {clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px); position: absolute; margin:10px}
-input[type="radio"] + label span{margin-bottom:10px; margin-left:10px; display: inline-block;width: 19px; height: 21px; background: url(../img/check.png) left top no-repeat; margin: -1px 4px 0 0; vertical-align: middle; cursor:pointer;}
-input[type="radio"]:checked + label span{background: url(../img/check.png) -19px top no-repeat;}
-@media \0screen\,screen\9 { input[type="radio"] {clip: auto; position: static;}  input[type="radio"] + label span {display:none;}}
+
 .valError {color: #ff4a48;border-color: #ebccd1;}
 /*.valErrorNew {color: #ff4a48;border-color: #ebccd1;}*/
 .valErrorEdit {color: #ff4a48;border-color: #ebccd1;}

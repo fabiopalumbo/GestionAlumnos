@@ -60,45 +60,47 @@
         <div class="modal fade" id="modal-alumnoEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-sm">
                 <div class="modal-content">
+                    <form id="form-editar" method="POST" role="form" action="<c:url value='/editar.htm'/>">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">Editar Alumno</h4>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <div id="form-aeditar">
 
-                                <div class="form-group">
-                                    <label for="nombre" class="label-agrupar"><span>Nombre </span></label>
-                                    <input id="nombreEditar" name="nombreEditar" required/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="apellidos" class="label-agrupar"><span>Apellidos </span></label>
-                                    <input id="apellidosEditar" name="apellidosEditar" required/>
-                                </div>
+                        <div id="form-aeditar">
 
-                                <div class="form-group">
-                                    <p class="valError" id="mensajeError"><i class=""></i></p>
-                                </div>
+                            <div class="form-group">
+                                <label for="nombre" class="label-agrupar"><span>Nombre </span></label>
+                                <input id="nombreEditar" name="nombreEditar" required/>
                             </div>
-                        </form>
+                            <div class="form-group">
+                                <label for="apellidos" class="label-agrupar"><span>Apellidos </span></label>
+                                <input id="apellidosEditar" name="apellidosEditar" required/>
+                                <input type="hidden" id="idAlumnoEditar" name="idAlumnoEditar" value=""/>
+                            </div>
+
+                            <div class="form-group">
+                                <p class="valError" id="mensajeError"><i class=""></i></p>
+                            </div>
+                        </div>
+
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="botonAgruparInformes" class="btn btn-eon">Aceptar</button>
+                        <button type="submit" id="botonEditarAlumnos" class="btn btn-eon">Editar</button>
                         <a href="#" class="btn btn-eon" data-dismiss="modal"><fmt:message key="tipo_grupo.button.cancelar"></fmt:message></a>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div> 
         </div>
+    <form id="form-eliminar" method="POST" role="form" action="<c:url value='/eliminar.htm'/>">
+        <input type="hidden" id="listaIdAlumno" name="listaIdAlumno" value=""/>
+    </form>
+    <div class="container">
+        <div id="barraAcciones">
 
-        <div class="container">
-            <div id="barraAcciones">
-
-                <a id="btnNuevo" href="#"><img src="img/add_32.png"></a>
-            <form id="form-eliminar" method="POST" role="form" action="<c:url value='/eliminar.htm'/>">
-                <a id="btnEliminar" href=""><img src="img/cancel20.png"></a>
-                <input type="hidden" id="listaIdAlumno" name="listaIdAlumno" value=""/>
-            </form>
+            <a id="btnNuevo" href="#"><img src="img/add_32.png"></a>
+            <a id="btnEliminar" href="#"><img src="img/cancel20.png"></a>
             <a id="btnEditar" href="#"><img src="img/edit.png"></a>
 
         </div>
@@ -114,9 +116,8 @@
             <tbody>
                 <c:forEach var="alumno" items="${listaAlumnos}">
                     <tr>  
-                        <td name="id_alumno"><input name="checkBal" id="${alumno.idAlumno}" value="${alumno.idAlumno}" type="checkbox"/>
-                            <label for="${alumno.idAlumno}"><span></span></label>                            
-
+                        <td name="id_alumno">
+                            <input name="checkBal" id="${alumno.idAlumno}" value="${alumno.idAlumno}" type="checkbox"/>
                         </td>
 
 
