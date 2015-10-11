@@ -23,6 +23,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
@@ -172,27 +178,28 @@
 
     <build>
         <plugins>
-            <!-- sonar (jacoco-->
+            
+            <!-- Maven Plugin Surefire: Test Unitarios -->
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.6.5.201403032054</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>>maven-surefire-plugin</artifactId>
+                <version>2.4.2</version>
                 <configuration>
-                    <propertyName>jacoco.agent.argLine</propertyName>
-                    <destFile>${sonar.jacoco.itReportPath}</destFile>
-                    <append>true</append>
+                    <argLine>-Xmx2048m</argLine>
+                    <includes>
+                        <include>
+                            **/*Test.java
+                        </include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/*TI.java</exclude>
+                    </excludes>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             
+             <!-- Plugin FailSafe: Test Integrados -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.14.1</version>
                 <dependencies>
@@ -203,7 +210,10 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <argLine>${jacoco.agent.argLine}</argLine>
+                    <includes>
+                        <include>**/*TI.java</include>
+                    </includes>
+                    <argLine>-Xmx2048m</argLine>
                     <testFailureIgnore>true</testFailureIgnore>
                     <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
                 </configuration>
@@ -213,10 +223,81 @@
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
+                        <configuration>
+                            <argLine>${failsafeArgLine}</argLine>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
+            
+            
+            <!-- Plugin Jacoco: Integrar Test en Sonar-->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.6.5.201403032054</version>
+                <configuration>
+                    <propertyName>jacoco.agent.argLine</propertyName>
+                    <destFile>${sonar.jacoco.itReportPath}</destFile>
+                    <append>true</append>
+                </configuration>
+                <executions>
+                    <!-- Pruebas Unitarias: Pre-unit-test, post-unit-test -->
+                    <execution>
+                        <id>pre-unit-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
+                            <propertyName>-Xmx2048m</propertyName>
+                        </configuration>
+                    </execution>
+                    
+                    
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Establece el path del archivo que contiene los datos de ejecución. -->
+                            <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
+                            <!-- Establece el directorio de salida para los informes de cobertura. -->
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <!-- Pruebas Integradas: Pre-integration-test, post-integration-test -->
+                    <execution>
+                        <id>pre-integration-test</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                        <!-- Establece el path al archivo que contiene la información de ejecución. -->
+                            <destFile>${project.build.directory}/coverage-reports/jacoco-it.exec</destFile>            
+                            <propertyName>failsafeArgLine</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-integration-test</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${project.build.directory}/coverage-reports/jacoco-it.exec</dataFile>
+                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+           
       
+            <!-- Plugin Maven Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -229,6 +310,8 @@
                     </compilerArguments>
                 </configuration>
             </plugin>
+            
+            <!-- Plugin Maven War -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -237,6 +320,8 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            
+            <!-- Plugin Maven Dependency -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
