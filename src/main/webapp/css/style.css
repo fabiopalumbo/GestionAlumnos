@@ -102,13 +102,15 @@ fieldset{ margin:20px}
     font-size: 18px;
 }
 
+#barraAcciones{padding-bottom:25px}
+
 .table {color:#888;}
 .table a {color:#000;}
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {border-top:1px solid #E3E3E3;}
 .table th {color:#111; font-weight:normal; line-height:18px !important;}
 .table th a {color:#111;}
 .table th a img {width:21px; margin-right:5px; transition:all 0.4s ease 0s}
-
+thead{background-color: #7AE021}
 .table th a:hover {text-decoration:none;}
 .table td {line-height:18px !important;}
 .table label {margin-bottom:0;}
