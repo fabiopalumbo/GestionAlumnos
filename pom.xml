@@ -237,9 +237,8 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.6.5.201403032054</version>
                 <configuration>
-                    <propertyName>jacoco.agent.argLine</propertyName>
-                    <destFile>${sonar.jacoco.itReportPath}</destFile>
-                    <append>true</append>
+                    <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+                    <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
                 </configuration>
                 <executions>
                     <!-- Pruebas Unitarias: Pre-unit-test, post-unit-test -->
@@ -248,10 +247,6 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <destFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</destFile>
-                            <propertyName>-Xmx2048m</propertyName>
-                        </configuration>
                     </execution>
                     
                     
@@ -261,12 +256,6 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <!-- Establece el path del archivo que contiene los datos de ejecución. -->
-                            <dataFile>${project.build.directory}/coverage-reports/jacoco-ut.exec</dataFile>
-                            <!-- Establece el directorio de salida para los informes de cobertura. -->
-                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
-                        </configuration>
                     </execution>
                     <!-- Pruebas Integradas: Pre-integration-test, post-integration-test -->
                     <execution>
@@ -275,11 +264,6 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                        <!-- Establece el path al archivo que contiene la información de ejecución. -->
-                            <destFile>${project.build.directory}/coverage-reports/jacoco-it.exec</destFile>            
-                            <propertyName>failsafeArgLine</propertyName>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>post-integration-test</id>
@@ -287,15 +271,17 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <dataFile>${project.build.directory}/coverage-reports/jacoco-it.exec</dataFile>
-                            <outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
             
-           
+           <!-- Plugin Sonar : Calidad codigo -->
+      
+           <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
       
             <!-- Plugin Maven Compiler -->
             <plugin>
