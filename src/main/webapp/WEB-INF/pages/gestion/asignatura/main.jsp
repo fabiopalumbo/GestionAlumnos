@@ -50,7 +50,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-eon">Aceptar</button>
-                        <a href="#" class="btn btn-eon" data-dismiss="modal"><fmt:message key="tipo_grupo.button.cancelar"></fmt:message></a>
+                        <a href="#" class="btn btn-eon" data-dismiss="modal">Cancelar</a>
                         </div>
                     </form>
                 </div>

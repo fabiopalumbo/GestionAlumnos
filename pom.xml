@@ -248,8 +248,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-                    
-                    
+                                
                     <execution>
                         <id>post-unit-test</id>
                         <phase>test</phase>
