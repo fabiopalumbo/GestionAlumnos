@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+                           
+    <select id="select-Asignaturas" resultClass="ctic.gestion.dto.Asignatura">
+        
+        SELECT ID, NOMBRE, DESCRIPCION FROM gestion.Asignatura
+        
+    </select>
+    
+    <update id="update-Asignatura" parameterClass="ctic.gestion.dto.Asignatura">
+        
+        UPDATE gestion.Asignatura SET NOMBRE = #nombre#, DESCRIPCION = #descripcion#
+        WHERE id = #id#
+        
+    </update>
+    
+    <delete id="delete-Asignatura" parameterClass="ctic.gestion.dto.Asignatura">
+        
+        DELETE FROM gestion.Asignatura WHERE id=#id# 
+        
+    </delete>
+    
+    <insert id="insert-Asignatura" parameterClass ="ctic.gestion.dto.Asignatura">
+        
+    INSERT INTO GESTION.ASIGNATURA(NOMBRE, DESCRIPCION) VALUES(#nombre:VARCHAR#, #descripcion:VARCHAR#)
+    </insert>         
+                               
+</sqlMap>

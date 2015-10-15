@@ -37,7 +37,7 @@ function compareDates(fecha1, fecha2) {
 
 function periodoValido(fechaDesde1, fechaHasta1, fechaDesde2, fechaHasta2) {
 
-    //Fecha Desde Balance
+    //Fecha Desde 
     var dia1 = fechaDesde1.substring(0,2);
     var mes1 = fechaDesde1.substring(3,5);
     var anyo1 = fechaDesde1.substring(6,10);
@@ -50,7 +50,7 @@ function periodoValido(fechaDesde1, fechaHasta1, fechaDesde2, fechaHasta2) {
     var dateFechaDesde1 = new Date(anyo1, mes1-1, dia1);
     var dateFechaDesde2 = new Date(anyo2, mes2-1, dia2);
     
-    //Fecha Hasta Balance
+    //Fecha Hasta 
     var dia3 = fechaHasta1.substring(0,2);
     var mes3 = fechaHasta1.substring(3,5);
     var anyo3 = fechaHasta1.substring(6,10);
