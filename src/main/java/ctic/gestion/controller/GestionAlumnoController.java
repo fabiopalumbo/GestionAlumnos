@@ -24,28 +24,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @Scope("session")
-@RequestMapping("/*")
-public class GestionController {
+@RequestMapping("/gestion/alumno/*")
+public class GestionAlumnoController {
 
-    public static String BASE_VIEW = "/gestion/";
+   
+    public static String BASE_VIEW_ALUMNO = "/gestion/alumno/";
+    public static String BASE_VIEW_MENU = "/gestion/";
+    
     @Autowired
     private AlumnosService serviceAlumnos;
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String acceso(HttpServletRequest request, ModelMap model) {
+    
+    @RequestMapping(value = "/menu", method = RequestMethod.GET)
+    public String inicio(HttpServletRequest request, ModelMap model) {
 
-        String nombre = request.getParameter("username");
-        String password = request.getParameter("password");
+        
+        return BASE_VIEW_MENU + "menu";
+    }
+    
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String listadoAlumnos(HttpServletRequest request, ModelMap model) {
 
         try {
+
             List<Alumno> lista = serviceAlumnos.getAlumnos();
             model.put("listaAlumnos", lista);
+            
 
         } catch (Exception ex) {
-            Logger.getLogger(GestionController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionAlumnoController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return BASE_VIEW + "main";
+        return BASE_VIEW_ALUMNO + "main";
     }
 
     @RequestMapping(value = "/nuevo", method = RequestMethod.POST)
@@ -73,9 +82,9 @@ public class GestionController {
             model.addAttribute("message", "Insertado correctamente el nuevo alumno");
 
         } catch (Exception ex) {
-            Logger.getLogger(GestionController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionAlumnoController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return BASE_VIEW + "main";
+        return BASE_VIEW_ALUMNO + "main";
     }
 
     @RequestMapping(value = "/eliminar", method = RequestMethod.POST)
@@ -101,10 +110,10 @@ public class GestionController {
             model.addAttribute("message", "Se ha borrado el alumno correctamente");
 
         } catch (Exception ex) {
-            Logger.getLogger(GestionController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionAlumnoController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return BASE_VIEW + "main";
+        return BASE_VIEW_ALUMNO + "main";
     }
 
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
@@ -130,12 +139,12 @@ public class GestionController {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(GestionController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionAlumnoController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         model.addAttribute("message", message);
 
-        return BASE_VIEW + "main";
+        return BASE_VIEW_ALUMNO + "main";
     }
 
 }

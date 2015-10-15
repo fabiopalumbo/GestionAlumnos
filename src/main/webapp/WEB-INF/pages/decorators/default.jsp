@@ -12,7 +12,7 @@
         <!--<link rel="shortcut icon" href="<c:url value="/favicon.ico"/>"
               type="image/x-icon" />-->
 
-        <title><fmt:message key="balances.application.head.title"/></title>
+        <title>Gestion de Alumnos</title>
 
          <link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/easyui.css'/>"/>
         <link rel="stylesheet" type="text/css" media="all" href="<c:url value='/css/bootstrap.css'/>" />
@@ -22,11 +22,10 @@
                                 
         <script type="text/javascript" src="<c:url value='/js/jquery.js'/>"></script>
         <script type="text/javascript" src="<c:url value='/js/jquery-ui.min.js'/>"></script>
-        <script type="text/javascript" src="<c:url value='/js/jquery.easyui.min.js'/>"></script>
+    
         <script type="text/javascript" src="<c:url value='/js/jquery.placeholder.js'/>"></script>                             
         <script type="text/javascript" src="<c:url value='/js/bootstrap.js'/>"></script>
-        <script type="text/javascript" src="<c:url value='/js/jquery.blockUI.js'/>"></script>
-        <script type="text/javascript" src="<c:url value='/js/jquery.cookie.js'/>"></script>
+      
         <script type="text/javascript" src="<c:url value='/js/html5shiv.js'/>"></script>
         <script type="text/javascript" src="<c:url value='/js/funciones.js'/>"></script>
 

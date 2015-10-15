@@ -4,28 +4,28 @@
 
 <sqlMap>
                            
-    <select id="select-Alumnos" resultClass="ctic.gestion.dto.Alumno">
+    <select id="select-Asignaturas" resultClass="ctic.gestion.dto.Asignatura">
         
-        SELECT IDALUMNO, NOMBRE, APELLIDOS FROM gestion.Alumno
+        SELECT ID, NOMBRE, DESCRIPCION FROM gestion.Asignatura
         
     </select>
     
-    <update id="update-Alumno" parameterClass="ctic.gestion.dto.Alumno">
+    <update id="update-Asignatura" parameterClass="ctic.gestion.dto.Asignatura">
         
-        UPDATE gestion.Alumno SET NOMBRE = #nombre#, APELLIDOS = #apellidos#
-        WHERE idAlumno = #idAlumno#
+        UPDATE gestion.Asignatura SET NOMBRE = #nombre#, DESCRIPCION = #descripcion#
+        WHERE id = #id#
         
     </update>
     
-    <delete id="delete-Alumno" parameterClass="ctic.gestion.dto.Alumno">
+    <delete id="delete-Asignatura" parameterClass="ctic.gestion.dto.Asignatura">
         
-        DELETE FROM gestion.Alumno WHERE idAlumno=#idAlumno# 
+        DELETE FROM gestion.Asignatura WHERE id=#id# 
         
     </delete>
     
-    <insert id="insert-Alumno" parameterClass ="ctic.gestion.dto.Alumno">
+    <insert id="insert-Asignatura" parameterClass ="ctic.gestion.dto.Asignatura">
         
-    INSERT INTO GESTION.ALUMNO(NOMBRE, APELLIDOS) VALUES(#nombre:VARCHAR#, #apellidos:VARCHAR#)
+    INSERT INTO GESTION.ASIGNATURA(NOMBRE, DESCRIPCION) VALUES(#nombre:VARCHAR#, #descripcion:VARCHAR#)
     </insert>         
                                
 </sqlMap>
