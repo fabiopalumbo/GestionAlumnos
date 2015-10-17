@@ -6,6 +6,10 @@ import ctic.gestion.dto.Asignatura;
 import ctic.gestion.dto.Matricula;
 import java.util.List;
 
+/**
+ * Capa Dao encargada de acciones sobre Matriculas
+ * @author rociomunoz
+ */
 public interface IMatriculasDao {     
     
     List<Matricula> getMatricula(Integer idAlumno) throws Exception;

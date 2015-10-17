@@ -13,6 +13,10 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementacion del servicio de Matriculas
+ * @author rociomunoz
+ */
 @Service
 public class MatriculaServiceImpl implements MatriculaService {
 

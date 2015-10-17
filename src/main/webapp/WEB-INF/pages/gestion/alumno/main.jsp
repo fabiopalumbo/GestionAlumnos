@@ -101,7 +101,7 @@
                         <input type="hidden" id="listaIdAlumno" name="listaIdAlumno" value=""/>
                     </form>
                         
-                    <form id="form-verMatricula" method="POST" role="form" action="<c:url value='/gestion/matricula/list.htm'/>">
+                    <form id="form-verMatricula" method="POST" role="form" action="<c:url value='/gestion/matricula/listByAlumno.htm'/>">
                         <input type="hidden" id="listaIdAlumnoMat" name="listaIdAlumnoMat" value=""/>
                     </form>
 

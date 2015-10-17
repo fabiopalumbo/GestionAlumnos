@@ -28,9 +28,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class GestionAlumnoController {
 
    
+    //Redireccion a las paginas
     public static String BASE_VIEW_ALUMNO = "/gestion/alumno/";
     public static String BASE_VIEW_MENU = "/gestion/";
     
+    // Inyectamos el servicio de Alumnos
     @Autowired
     private AlumnosService serviceAlumnos;
 
@@ -42,6 +44,13 @@ public class GestionAlumnoController {
         return BASE_VIEW_MENU + "menu";
     }
     
+    
+    /**
+     * Carga la lista de alumnos en la vista main.jsp
+     * @param request
+     * @param model
+     * @return Devuelve url donde mostrar los datos
+     */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listadoAlumnos(HttpServletRequest request, ModelMap model) {
 
@@ -57,6 +66,12 @@ public class GestionAlumnoController {
         return BASE_VIEW_ALUMNO + "main";
     }
 
+    /**
+     * Inserta un nuevo alumno
+     * @param request
+     * @param model
+     * @return 
+     */
     @RequestMapping(value = "/nuevo", method = RequestMethod.POST)
     public String nuevo(HttpServletRequest request, ModelMap model) {
 
@@ -87,6 +102,12 @@ public class GestionAlumnoController {
         return BASE_VIEW_ALUMNO + "main";
     }
 
+    /**
+     * Elimina todos los alumnos que le lleguen por parametro
+     * @param request Recibe los idAlumnos para eliminar
+     * @param model Recarga la lista de alumnos resultante
+     * @return 
+     */
     @RequestMapping(value = "/eliminar", method = RequestMethod.POST)
     public String borrar(HttpServletRequest request, ModelMap model) {
 
@@ -116,6 +137,12 @@ public class GestionAlumnoController {
         return BASE_VIEW_ALUMNO + "main";
     }
 
+    /**
+     * Edita el alumno seleccionado
+     * @param request Parametros a editar
+     * @param model Devuelve la lista de alumnos resultante
+     * @return 
+     */
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
     public String editar(HttpServletRequest request, ModelMap model) {
         String message = "";

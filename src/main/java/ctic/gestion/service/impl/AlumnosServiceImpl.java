@@ -10,6 +10,11 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementacion del Servicio de Alumnos
+ * @author rociomunoz
+ */
+
 @Service
 public class AlumnosServiceImpl implements AlumnosService {
 

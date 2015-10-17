@@ -179,6 +179,11 @@
     <build>
         <plugins>
             
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            
             <!-- Maven Plugin Surefire: Test Unitarios -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -197,7 +202,7 @@
                 </configuration>
             </plugin>
             
-             <!-- Plugin FailSafe: Test Integrados -->
+            <!-- Plugin FailSafe: Test Integrados -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -274,9 +279,9 @@
                 </executions>
             </plugin>
             
-           <!-- Plugin Sonar : Calidad codigo -->
+            <!-- Plugin Sonar : Calidad codigo -->
       
-           <plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>2.3</version>

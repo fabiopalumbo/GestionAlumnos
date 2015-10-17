@@ -19,7 +19,7 @@
                     <a href="<c:url value='/gestion/asignatura/list.htm'/>">Gestion Asignaturas</a>
                 </li>
                 <li>
-                    <a href="<c:url value='/gestion/matricula/list.htm'/>">Matriculas</a>
+                    <a href="<c:url value='/gestion/matricula/listAlumnosMatricula.htm'/>">Matriculas</a>
                 </li>
                
             </ul>

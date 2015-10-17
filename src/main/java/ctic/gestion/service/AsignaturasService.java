@@ -4,6 +4,10 @@ import ctic.gestion.dto.Alumno;
 import ctic.gestion.dto.Asignatura;
 import java.util.List;
 
+/**
+ * Servicio encargado de realizar acciones sobre Asignaturas
+ * @author rociomunoz
+ */
 public interface AsignaturasService {
 
     public List<Asignatura> getAsignaturas() throws Exception;

@@ -41,12 +41,15 @@
                         </div>
                     
                     
-                    <form id="form-matAlumno" method="POST" role="form" action="<c:url value='/gestion/asignatura/.htm'/>">
-                          <select name="comboAlumno">
-                            <c:forEach var="alumno" items="${alumnosCombo}">
+                    <form id="form-matAlumno" method="POST" role="form" action="<c:url value='/gestion/matricula/listByAlumno.htm'/>">
+                          <select name="listaIdAlumnoMat" required>
+                            <c:forEach var="alumno" items="${listaAlumnosCombo}">
                                 <option value="${alumno.idAlumno}">${alumno.nombre}</option>  
                             </c:forEach>
                         </select>
+                          
+                        <button type="submit" class="btn btn-eon">Consultar</button>
+                                        
                     </form>  
 
                         <table id="tablaAlumnos" class="table table-condensed">

@@ -11,6 +11,7 @@ import ctic.gestion.dto.Matricula;
 import ctic.gestion.service.AlumnosService;
 import ctic.gestion.service.AsignaturasService;
 import ctic.gestion.service.MatriculaService;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,9 @@ public class GestionMatriculaController {
     public static String BASE_VIEW_MENU = "/gestion/";
     @Autowired
     private MatriculaService serviceMatricula;
+    
+    @Autowired
+    private AlumnosService serviceAlumnos;
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public String inicio(HttpServletRequest request, ModelMap model) {
@@ -42,35 +46,43 @@ public class GestionMatriculaController {
         return BASE_VIEW_MENU + "menu";
     }
 
-    /*
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public String listadoMatriculaByAlumnoPOST(HttpServletRequest request, ModelMap model) {
+    /**
+     * Carga de matriculas desde el menu lateral
+     * @param request
+     * @param model
+     * @return 
+     */
+    @RequestMapping(value = "/listAlumnosMatricula", method = RequestMethod.GET)
+    public String listadoAlumnos(HttpServletRequest request, ModelMap model) {
 
         try {
 
-            List<Matricula> lista = null;
-            String idAlumno = request.getParameter("idAlumno");
-           
-                    int iId = Integer.parseInt(idAlumno);
-                    Alumno al = new Alumno();
-                    al.setIdAlumno(iId);
-                    lista = serviceMatricula.getMatricula(al);
-        
-            model.put("listaMatriculas", lista);
+            List<Alumno> lista = serviceAlumnos.getAlumnos();
+            List<Matricula> listaMat = new ArrayList<Matricula>();
+            model.put("listaAlumnosCombo", lista);
+            model.put("listaMatriculas", listaMat);
+            
 
         } catch (Exception ex) {
             Logger.getLogger(GestionAlumnoController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return BASE_VIEW_MAT + "main";
-    }*/
+    }
     
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public String listadoMatriculaByAlumnoGET(HttpServletRequest request, ModelMap model) {
+    /**
+     * Carga de matriculas parametrizado por Alumno
+     * @param request Recibe idAlumno 
+     * @param model Devuelve la lista de matriculas del alumno
+     * @return 
+     */
+    @RequestMapping(value = "/listByAlumno", method = RequestMethod.POST)
+    public String listadoMatriculaByAlumno(HttpServletRequest request, ModelMap model) {
 
         try {
 
             String idAlumnos = request.getParameter("listaIdAlumnoMat");
             List<Matricula> lista = null;
+            List<Alumno> listaAlumnos = null;
             if (idAlumnos != null && !idAlumnos.equals("")) {
                 String[] arrayIds = idAlumnos.split(";");
 
@@ -79,16 +91,23 @@ public class GestionMatriculaController {
                     Alumno al = new Alumno();
                     al.setIdAlumno(iId);
                     lista = serviceMatricula.getMatricula(al);
+                    listaAlumnos = serviceAlumnos.getAlumnos();
                 }
 
             }
 
             model.put("listaMatriculas", lista);
+            model.put("listaAlumnosCombo", listaAlumnos);
+            model.put("idAlumno", idAlumnos);
 
         } catch (Exception ex) {
             Logger.getLogger(GestionAlumnoController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return BASE_VIEW_MAT + "main";
     }
+    
+    
+    
+    
 
 }

@@ -5,6 +5,10 @@ import ctic.gestion.dto.Alumno;
 import ctic.gestion.dto.Asignatura;
 import java.util.List;
 
+/**
+ * Capa Dao encargada de acciones sobre Asignaturas
+ * @author rociomunoz
+ */
 public interface IAsignaturasDao {     
     
     List<Asignatura> getAsignaturas() throws Exception;

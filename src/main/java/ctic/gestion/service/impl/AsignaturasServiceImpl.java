@@ -13,6 +13,11 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Implementacion del servicio de Asignaturas
+ * @author rociomunoz
+ */
+
 @Service
 public class AsignaturasServiceImpl implements AsignaturasService {
 

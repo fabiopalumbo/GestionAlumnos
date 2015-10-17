@@ -41,6 +41,12 @@ public class GestionAsignaturasController {
         return BASE_VIEW_MENU + "menu";
     }
 
+    /**
+     * Carga la lista de Asignaturas
+     * @param request No recibe parametros
+     * @param model devuelve la lista de asignaturas
+     * @return url donde mostrar los datos
+     */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listadoAsignaturas(HttpServletRequest request, ModelMap model) {
 
@@ -86,6 +92,12 @@ public class GestionAsignaturasController {
         return BASE_VIEW_ASIG + "main";
     }
 
+    /**
+     * Elimina las asignaturas que le lleguen por parametro
+     * @param request IdAsignatura a eliminar
+     * @param model Se devuelve la lista de asignaturas resultante
+     * @return 
+     */
     @RequestMapping(value = "/eliminar", method = RequestMethod.POST)
     public String borrar(HttpServletRequest request, ModelMap model) {
 
@@ -116,6 +128,12 @@ public class GestionAsignaturasController {
         return BASE_VIEW_ASIG + "main";
     }
 
+    /**
+     * Edita la asignatura seleccionada
+     * @param request Parametros a editar
+     * @param model Devuelve la lista de asignaturas resultante
+     * @return 
+     */
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
     public String editar(HttpServletRequest request, ModelMap model) {
         String message = "";
