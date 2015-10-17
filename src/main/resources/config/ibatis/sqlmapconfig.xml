@@ -14,6 +14,7 @@
    
     <sqlMap resource="config/ibatis/xml/bddGestion.xml" />
     <sqlMap resource="config/ibatis/xml/bddAsignaturas.xml" />
+    <sqlMap resource="config/ibatis/xml/bddMatricula.xml" />
    
     
 </sqlMapConfig>

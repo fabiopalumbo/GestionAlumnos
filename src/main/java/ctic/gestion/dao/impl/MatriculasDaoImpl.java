@@ -46,12 +46,12 @@ public class MatriculasDaoImpl extends SqlMapClientDaoSupport implements IMatric
     }
 
     @Override
-    public Matricula getMatricula(Integer idAlumno) throws Exception {
+    public List<Matricula> getMatricula(Integer idAlumno) throws Exception {
     
         HashMap hm = new HashMap();
         hm.put("idAlumno", idAlumno);
-        Matricula mat = (Matricula)super.getSqlMapClientTemplate().queryForObject("select-Matricula", hm);
-        return mat;
+        List<Matricula> lista = (List<Matricula>)super.getSqlMapClientTemplate().queryForList("select-Matricula", hm);
+        return lista;
         
     }
 

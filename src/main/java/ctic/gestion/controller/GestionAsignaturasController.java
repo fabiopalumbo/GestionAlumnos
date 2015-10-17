@@ -9,6 +9,7 @@ import ctic.gestion.dto.Alumno;
 import ctic.gestion.dto.Asignatura;
 import ctic.gestion.service.AlumnosService;
 import ctic.gestion.service.AsignaturasService;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,25 +35,24 @@ public class GestionAsignaturasController {
     @Autowired
     private AsignaturasService serviceAsignaturas;
 
-    
-     @RequestMapping(value = "/menu", method = RequestMethod.GET)
+    @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public String inicio(HttpServletRequest request, ModelMap model) {
 
-        
         return BASE_VIEW_MENU + "menu";
     }
-    
-   @RequestMapping(value = "/list", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listadoAsignaturas(HttpServletRequest request, ModelMap model) {
 
+        List<Asignatura> lista = new ArrayList<Asignatura>();
         try {
 
-            List<Asignatura> lista = serviceAsignaturas.getAsignaturas();
-            model.put("listaAsignaturas", lista);
-            
+            lista = serviceAsignaturas.getAsignaturas();
+
         } catch (Exception ex) {
             Logger.getLogger(GestionAlumnoController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        model.put("listaAsignaturas", lista);
         return BASE_VIEW_ASIG + "main";
     }
 
@@ -98,13 +98,14 @@ public class GestionAsignaturasController {
                 for (String id : arrayIds) {
                     long iId = Integer.parseInt(id);
                     Asignatura asig = new Asignatura();
-                    asig.setId(iId);
+                    asig.setIdAsignatura(iId);
                     serviceAsignaturas.deleteAsignatura(asig);
-                    List<Asignatura> lista = serviceAsignaturas.getAsignaturas();
-                    model.put("listaAsignaturas", lista);
 
                 }
             }
+
+            List<Asignatura> lista = serviceAsignaturas.getAsignaturas();
+            model.put("listaAsignaturas", lista);
 
             model.addAttribute("message", "Se ha borrado la asignatura correctamente");
 
@@ -126,7 +127,7 @@ public class GestionAsignaturasController {
             if (idEditar != null && !idEditar.equals("")) {
                 Long iIdEditar = Long.parseLong(idEditar);
                 Asignatura asig = new Asignatura();
-                asig.setId(iIdEditar);
+                asig.setIdAsignatura(iIdEditar);
                 asig.setDescripcion(apellidoEditar);
                 asig.setNombre(nombreEditar);
                 serviceAsignaturas.updateAsignatura(asig);

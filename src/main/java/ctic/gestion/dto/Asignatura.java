@@ -11,20 +11,22 @@ package ctic.gestion.dto;
  */
 public class Asignatura {
     
-    private Long id;
+    private Long idAsignatura;
     private String nombre;
     private String descripcion;
     
     public Asignatura(){
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdAsignatura() {
+        return idAsignatura;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdAsignatura(Long idAsignatura) {
+        this.idAsignatura = idAsignatura;
     }
+
+   
 
     public String getNombre() {
         return nombre;

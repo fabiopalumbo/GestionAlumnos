@@ -24,17 +24,17 @@ public class MatriculaServiceImpl implements MatriculaService {
     }
 
     @Override
-    public Matricula getMatricula(Alumno al) throws Exception {
+    public List<Matricula> getMatricula(Alumno al) throws Exception {
 
-        Matricula matricula = null;
+        List<Matricula> listaMatricula = null;
         try {
-            matricula = daoLocal.getMatricula(al.getIdAlumno());
+            listaMatricula = daoLocal.getMatricula(al.getIdAlumno());
 
         } catch (Exception e) {
-            Logger.getLogger(AsignaturasServiceImpl.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MatriculaServiceImpl.class.getName()).log(Level.SEVERE, null, e);
 
         }
-        return matricula;
+        return listaMatricula;
     }
 
 }

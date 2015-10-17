@@ -6,20 +6,20 @@
                            
     <select id="select-Asignaturas" resultClass="ctic.gestion.dto.Asignatura">
         
-        SELECT ID, NOMBRE, DESCRIPCION FROM gestion.Asignatura
+        SELECT IDASIGNATURA, NOMBRE, DESCRIPCION FROM gestion.Asignatura
         
     </select>
     
     <update id="update-Asignatura" parameterClass="ctic.gestion.dto.Asignatura">
         
         UPDATE gestion.Asignatura SET NOMBRE = #nombre#, DESCRIPCION = #descripcion#
-        WHERE id = #id#
+        WHERE idAsignatura = #idAsignatura#
         
     </update>
     
     <delete id="delete-Asignatura" parameterClass="ctic.gestion.dto.Asignatura">
         
-        DELETE FROM gestion.Asignatura WHERE id=#id# 
+        DELETE FROM gestion.Asignatura WHERE idAsignatura=#idAsignatura# 
         
     </delete>
     

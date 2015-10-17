@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IMatriculasDao {     
     
-    Matricula getMatricula(Integer idAlumno) throws Exception;
+    List<Matricula> getMatricula(Integer idAlumno) throws Exception;
     void insertMatricula(Alumno al, Asignatura asig) throws Exception;
     void deleteMatricula(Alumno al, Asignatura asig) throws Exception;
     void updateMatricula(Alumno al, Asignatura asig) throws Exception;
