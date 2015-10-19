@@ -13,12 +13,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <org.springframework.version>3.1.1.RELEASE</org.springframework.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
-        <sonar.jdbc.username>sonar</sonar.jdbc.username>
-        <sonar.jdbc.password>sonar</sonar.jdbc.password>
-        <sonar.language>web</sonar.language>
-        <!-- Optional URL to server. Default value is http://localhost:9000 -->
-        <sonar.host.url>http://localhost:9000</sonar.host.url>
+        
             
     </properties>
 
@@ -372,5 +367,34 @@
         </resources>
         
     </build>
+
+    <profiles>
+    <profile>
+        <id>WEB</id>
+        <properties>
+            <sonar.branch>WEB</sonar.branch>
+            <sonar.language>web</sonar.language>
+            <sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
+            <sonar.jdbc.username>sonar</sonar.jdbc.username>
+            <sonar.jdbc.password>sonar</sonar.jdbc.password>
+            <!-- Optional URL to server. Default value is http://localhost:9000 -->
+            <sonar.host.url>http://localhost:9000</sonar.host.url>
+            
+        </properties>
+    </profile>
+    <profile>
+        <id>JAVA</id>
+        <properties>
+            <sonar.branch>JAVA</sonar.branch>
+            <sonar.sources>src</sonar.sources>
+            <sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
+            <sonar.jdbc.username>sonar</sonar.jdbc.username>
+            <sonar.jdbc.password>sonar</sonar.jdbc.password>
+            <!-- Optional URL to server. Default value is http://localhost:9000 -->
+            <sonar.host.url>http://localhost:9000</sonar.host.url>
+        </properties>
+    </profile>
+</profiles>
+
 
 </project>
