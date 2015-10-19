@@ -16,6 +16,7 @@
         <sonar.jdbc.url>jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
         <sonar.jdbc.username>sonar</sonar.jdbc.username>
         <sonar.jdbc.password>sonar</sonar.jdbc.password>
+        <sonar.language>web</sonar.language>
         <!-- Optional URL to server. Default value is http://localhost:9000 -->
         <sonar.host.url>http://localhost:9000</sonar.host.url>
             
@@ -277,6 +278,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            
+            <!-- Plugin sonar web: Tratar html -->
+            <plugin>
+                <groupId>org.codehaus.sonar-plugins</groupId>
+                <artifactId>sonar-web-plugin</artifactId>
+                <version>2.3</version>
             </plugin>
             
             <!-- Plugin Sonar : Calidad codigo -->
